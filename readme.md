@@ -42,6 +42,6 @@ run the `generate.sh` script providing a domain name to be used as a filename an
 
 ### You are done
 
-- All you need to do is retrieve your certificate from the `signed` folder and import `ca/ca.crt` into your browser
+- All you need to do is retrieve your certificate from the `domains/[example.tld]` folder and import `ca/ca.crt` into your browser
 - For chrome users go to [chrome://settings/certificates](chrome://settings/certificates) and click IMPORT on the AUTHORITIES tab.  
 Check every checkbox and click ok.
