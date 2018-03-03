@@ -1,0 +1,11 @@
+.idea
+database/
+database.db*
+serial*
+signed/*
+domains/*
+ca/ca.key
+ca/ca.crt
+
+!.gitkeep
+!.gitignore
