@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+if [ ! -d "database" ]; then
+    mkdir database
+fi
 if [ ! -f "./database/database.db" ]; then
     touch ./database/database.db
 fi
