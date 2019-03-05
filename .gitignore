@@ -1,11 +1,12 @@
 .idea
-database/
 database.db*
 serial*
 signed/*
 domains/*
-ca/ca.key
-ca/ca.crt
+
+ca.key
+ca*.crt
+request.conf
 
 !.gitkeep
 !.gitignore

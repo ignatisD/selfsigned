@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
-cafile=ca.crt
-if [ -f "ca.crt" ]; then
-    cafile=ca2.crt
+CAKEYFILE=ca.key
+if [[ ! -f "$CAKEYFILE" ]]; then
+    openssl genrsa -out ca.key 2048
 fi
-openssl req -new -x509 -days 730 -keyout ca.key -out "$cafile" -config ca.request.conf
+index=1
+CAFILE="ca$index.crt"
+while [[ -f "$CAFILE" ]]; do
+	index=$(expr "$index" + 1)
+	CAFILE="ca$index.crt"
+done
+openssl req -new -x509 -days 730 -key "$CAKEYFILE" -out "$CAFILE" -config ca.request.conf
+if [[ $? -eq 0 ]]; then
+    echo OK
+else
+    echo FAILED
+    exit
+fi
+if [[ -f ca.crt ]]; then
+    rm ca.crt
+fi
+cp "$CAFILE" ca.crt
