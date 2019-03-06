@@ -47,7 +47,7 @@ else
     echo FAILED
     exit
 fi
-cat "domains/$domain/ca.crt" "domains/$domain/$domainfile.crt" > "domains/$domain/$domainfile.bundle.crt"
+cat "domains/$domain/$domainfile.crt" "domains/$domain/ca.crt" > "domains/$domain/$domainfile.bundle.crt"
 cp "domains/$domain/$domainfile.crt" "domains/$domain/$domainfile.crt.pem"
 cp "domains/$domain/$domainfile.bundle.crt" "domains/$domain/$domainfile.bundle.pem"
 
