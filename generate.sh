@@ -28,6 +28,7 @@ if [[ -f "domains/$domain/$domainfile.crt" ]]; then
         index=$(expr "$index" + 1)
         domainfile="${domain}$index"
     done
+    echo "Renewing... $domainfile.csr"
     openssl req -new -out "domains/$domain/$domainfile.csr" -key "domains/$domain/$domain.key" -config "domains/$domain/request.conf"
     if [[ !($? -eq 0) ]]; then
         echo FAILED
@@ -40,6 +41,7 @@ fi
 cp -L ca/ca.crt "domains/$domain/ca.crt"
 cp "domains/$domain/ca.crt" "domains/$domain/ca.pem"
 
+echo "Executing the Certificate request"
 openssl ca -batch -config ./ca.conf -out "domains/$domain/$domainfile.crt" -extfile "domains/$domain/request.extensions.conf" -in "domains/$domain/$domainfile.csr"
 if [[ $? -eq 0 ]]; then
     echo OK
