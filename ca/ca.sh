@@ -9,7 +9,7 @@ while [[ -f "$CAFILE" ]]; do
 	index=$(expr "$index" + 1)
 	CAFILE="ca$index.crt"
 done
-openssl req -new -x509 -days 730 -key "$CAKEYFILE" -out "$CAFILE" -config ca.request.conf
+openssl req -new -x509 -days 3650 -key "$CAKEYFILE" -out "$CAFILE" -config ca.request.conf
 if [[ $? -eq 0 ]]; then
     echo OK
 else
